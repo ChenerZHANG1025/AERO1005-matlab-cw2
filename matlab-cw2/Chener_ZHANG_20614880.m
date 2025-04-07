@@ -5,7 +5,7 @@
 %% PRELIMINARY TASK - ARDUINO AND GIT INSTALLATION [10 MARKS]
 
 % Insert answers here
-
+a=1+2;
 %% TASK 1 - READ TEMPERATURE DATA, PLOT, AND WRITE TO A LOG FILE [20 MARKS]
 
 % Insert answers here
