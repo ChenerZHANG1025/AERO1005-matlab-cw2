@@ -22,8 +22,9 @@ V_0c = 0.5;
 T_c = 0.01;
 duration = 600;
 sampling_interval = 1;
-time = 1:duration;
-for t = 1:duration
+time = 0:duration;
+temperature = zeros(1, length(time));
+for t = 1:length(time)
     A0_voltage(t) = readVoltage(a,'A0');
     temperature(t) = (A0_voltage(t)-V_0c)/T_c;
 end
@@ -37,6 +38,43 @@ xlim([0 duration]);
 ylabel('Temperature (Celsius)');
 grid on;
 
+% 获取当前日期和时间
+date = datetime('now');
+% 将日期时间转换为字符串格式
+a = datestr(date,'dd/mm/yyyy');
+% 显示结果
+Location = 'Ningbo';
+b = sprintf('Data logging initiated - %s\nLocation - %s\n', a, Location);
+disp(b);
+for minute = 0:10
+    n = minute*60+1;
+    temp = temperature(n);
+    c = sprintf('Minute\t\t%d',minute);
+    d = sprintf('Temperature\t%.2f C\n',temp);
+    disp(c);
+    disp(d);
+end
+e = sprintf('Max temp\t%.2f C',max_temp);
+f = sprintf('Min temp\t%.2f C',min_temp);
+g = sprintf('Average temp\t%.2f C',avg_temp);
+disp(e);
+disp(f);
+disp(g);
+h = sprintf('\nData logging terminated');
+disp(h);
+fileID = fopen('cabin_temperature.txt','w');
+fprintf(fileID,'Data logging initiated - %s\nLocation - %s\n\n', a, Location);
+for minute = 0:10
+    n = minute*60+1;
+    temp = temperature(n);
+    fprintf(fileID,'Minute\t\t%d\n',minute);
+    fprintf(fileID,'Temperature\t%.2f C\n\n',temp);
+end
+fprintf(fileID,'Max temp\t%.2f C\n',max_temp);
+fprintf(fileID,'Min temp\t%.2f C\n',min_temp);
+fprintf(fileID,'Average temp\t%.2f C\n\n',avg_temp);
+fprintf(fileID,'Data logging terminated');
+fclose(fileID);
 %% TASK 2 - LED TEMPERATURE MONITORING DEVICE IMPLEMENTATION [25 MARKS]
 
 % Insert answers here
