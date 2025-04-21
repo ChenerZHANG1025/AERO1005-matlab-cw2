@@ -16,7 +16,7 @@ end
 %% TASK 1 - READ TEMPERATURE DATA, PLOT, AND WRITE TO A LOG FILE [20 MARKS]
 
 % Insert answers here
-clear
+clear all
 a = arduino("/dev/cu.usbserial-10","Uno");
 V_0c = 0.5;
 T_c = 0.01;
@@ -38,11 +38,8 @@ xlim([0 duration]);
 ylabel('Temperature (Celsius)');
 grid on;
 
-% 获取当前日期和时间
 date = datetime('now');
-% 将日期时间转换为字符串格式
 a = datestr(date,'dd/mm/yyyy');
-% 显示结果
 Location = 'Ningbo';
 b = sprintf('Data logging initiated - %s\nLocation - %s\n', a, Location);
 disp(b);
@@ -67,19 +64,19 @@ fprintf(fileID,'Data logging initiated - %s\nLocation - %s\n\n', a, Location);
 for minute = 0:10
     n = minute*60+1;
     temp = temperature(n);
-    fprintf(fileID,'Minute\t\t%d\n',minute);
-    fprintf(fileID,'Temperature\t%.2f C\n\n',temp);
+    fprintf(fileID,'Minute\t\t\t%d\n',minute);
+    fprintf(fileID,'Temperature\t\t%.2f C\n\n',temp);
 end
-fprintf(fileID,'Max temp\t%.2f C\n',max_temp);
-fprintf(fileID,'Min temp\t%.2f C\n',min_temp);
+fprintf(fileID,'Max temp\t\t%.2f C\n',max_temp);
+fprintf(fileID,'Min temp\t\t%.2f C\n',min_temp);
 fprintf(fileID,'Average temp\t%.2f C\n\n',avg_temp);
 fprintf(fileID,'Data logging terminated');
 fclose(fileID);
 %% TASK 2 - LED TEMPERATURE MONITORING DEVICE IMPLEMENTATION [25 MARKS]
-
 % Insert answers here
-
-
+clear all
+a = arduino("/dev/cu.usbserial-10","Uno");
+f = temp_monitor(a);
 %% TASK 3 - ALGORITHMS – TEMPERATURE PREDICTION [25 MARKS]
 
 % Insert answers here

@@ -1,41 +1,41 @@
 Data logging initiated - 21/04/2025
 Location - Ningbo
 
-Minute		0
-Temperature	23.31 C
+Minute			0
+Temperature		24.78 C
 
-Minute		1
-Temperature	23.80 C
+Minute			1
+Temperature		24.78 C
 
-Minute		2
-Temperature	23.80 C
+Minute			2
+Temperature		24.78 C
 
-Minute		3
-Temperature	23.80 C
+Minute			3
+Temperature		24.78 C
 
-Minute		4
-Temperature	23.80 C
+Minute			4
+Temperature		24.78 C
 
-Minute		5
-Temperature	23.80 C
+Minute			5
+Temperature		24.29 C
 
-Minute		6
-Temperature	23.80 C
+Minute			6
+Temperature		24.29 C
 
-Minute		7
-Temperature	23.80 C
+Minute			7
+Temperature		24.29 C
 
-Minute		8
-Temperature	23.31 C
+Minute			8
+Temperature		24.78 C
 
-Minute		9
-Temperature	23.80 C
+Minute			9
+Temperature		24.29 C
 
-Minute		10
-Temperature	23.80 C
+Minute			10
+Temperature		24.29 C
 
-Max temp	23.80 C
-Min temp	23.31 C
-Average temp	23.70 C
+Max temp		25.27 C
+Min temp		24.29 C
+Average temp	24.71 C
 
 Data logging terminated
