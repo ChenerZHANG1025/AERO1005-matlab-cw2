@@ -83,12 +83,13 @@ fclose(fileID); % close the file
 clear all
 a = arduino("/dev/cu.usbserial-10","Uno"); % connect the arduino to the workspace 
 f = temp_monitor(a); % call function of temp_monitor to the main file and pass the variable a which represents the arduino
+% use "doc temp_monitor" in command window to see the documentation of the function
 %% TASK 3 - ALGORITHMS – TEMPERATURE PREDICTION [25 MARKS]
 % Insert answers here
 clear all
 a = arduino("/dev/cu.usbserial-10","Uno"); % connect the arduino to the workspace 
 f = temp_prediction(a); % call function of temp_prediction to the main file and pass the variable a which represents the arduino
-
+% use "doc temp_prediction" in command window to see the documentation of the function
 %% TASK 4 - REFLECTIVE STATEMENT [5 MARKS]
 
 % Insert answers here

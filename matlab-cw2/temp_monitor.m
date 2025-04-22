@@ -1,5 +1,18 @@
-function temp_monitor=temp_monitor(a)
-
+function temp_monitor = temp_monitor(a)
+% TEMP_MONITOR is a function based on the temperature collected by the
+% temperature sensor which is connected to arduino and pass the information
+% by using the arduino.
+%
+% TEMP_MONITOR = TEMP_MONITOR(a) is worked with the variable a, which
+% represents the arduino connected to the computer. (e.g.a =
+% arduino("/dev/cu.usbserial-10","Uno")), the connected arduino should set
+% in the main running file and pass the arduino variable to the function
+% here. The function is to monitor the temperature of the cabin. It is used to
+% draw the living figure for the temperature changing with the time and
+% the temperature by using LED to make the temperature representation more
+% direct. If the Green LED lights on, the cabin is in a comfortable
+% temperature (18-24 C), when the temperature is greater, the red LED turns
+% on, and the yellow one turn on when the temperature is lower than 18 C.
 figure;
 h = plot(NaN, NaN); 
 xlabel('Time (s)');
