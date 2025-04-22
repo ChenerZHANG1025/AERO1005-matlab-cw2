@@ -81,14 +81,13 @@ fclose(fileID); % close the file
 %% TASK 2 - LED TEMPERATURE MONITORING DEVICE IMPLEMENTATION [25 MARKS]
 % Insert answers here
 clear all
-a = arduino("/dev/cu.usbserial-10","Uno");
-f = temp_monitor(a);
+a = arduino("/dev/cu.usbserial-10","Uno"); % connect the arduino to the workspace 
+f = temp_monitor(a); % call function of temp_monitor to the main file and pass the variable a which represents the arduino
 %% TASK 3 - ALGORITHMS – TEMPERATURE PREDICTION [25 MARKS]
-
 % Insert answers here
 clear all
-a = arduino("/dev/cu.usbserial-10","Uno");
-f = temp_prediction(a);
+a = arduino("/dev/cu.usbserial-10","Uno"); % connect the arduino to the workspace 
+f = temp_prediction(a); % call function of temp_prediction to the main file and pass the variable a which represents the arduino
 
 %% TASK 4 - REFLECTIVE STATEMENT [5 MARKS]
 
