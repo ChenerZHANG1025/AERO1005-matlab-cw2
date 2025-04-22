@@ -1,10 +1,9 @@
 function temp_prediction = time_prediction(a)
 
-    collect_temp = [];      
-    duration = 600;     
+    collect_temp = [];       
     
     tic;
-    while toc <= duration
+    while true
         time = toc;
         A0_voltage = readVoltage(a, 'A0');
         current_temp = (A0_voltage - 0.5) / 0.01;

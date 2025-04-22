@@ -13,39 +13,45 @@ function temp_monitor = temp_monitor(a)
 % direct. If the Green LED lights on, the cabin is in a comfortable
 % temperature (18-24 C), when the temperature is greater, the red LED turns
 % on, and the yellow one turn on when the temperature is lower than 18 C.
+
+% draw the living time-temperature figure 
 figure;
-h = plot(NaN, NaN); 
+h = plot(NaN,NaN); % set a variable represents an empty figure
+% set the label for x and y axes
 xlabel('Time (s)');
 ylabel('Temperature (Celsius)');
-grid on;
-xlim([0 600]);
-ylim([10 40]);
-hold on;
+grid on; % generate the grid lines
+xlim([0 30])
+ylim([10 40]); % limit the y axis from 10 t0 40
+hold on; % keep the figure drawing
 
-duration = 600;
-time_data = NaN(1, duration);
-temp_data = NaN(1, duration);
-idx = 1;
+n = 30;  % 30秒数据缓冲区
+time_data = NaN(1, n);  % 初始化为NaN（避免零值干扰）
+temp_data = NaN(1, n);
+idx = 1;  % 当前写入位置
+ % set an empty array with the length of the whole duration for collecting time data
+ % set an empty array with the length of the whole duration for collecting temperature data
+ % let the data collect from number 1, and make an index for the data collected from the arduino
 
 writeDigitalPin(a, 'D3', 0);
 writeDigitalPin(a, 'D5', 0);
 writeDigitalPin(a, 'D7', 0);
 
-tic;
-while toc <= 600
-    time = toc;
+tic; % start the timer
+while true % determine whether the elapsed time is greater than 600 seconds
+    time = toc; % set the variable
     A0_voltage = readVoltage(a, 'A0');
     temp = (A0_voltage - 0.5) / 0.01;
-   
+   if time > 30
+        x_lim_min = time - 30;
+        x_lim_max = time;
+        xlim([x_lim_min x_lim_max]) 
+   end
     time_data(idx) = time;
     temp_data(idx) = temp;
     set(h, 'XData', time_data(1:idx), 'YData', temp_data(1:idx));
-
-    if time > 600
-        xlim([time-600 time]);
-    end
-
     drawnow;
+
     if temp < 18
         writeDigitalPin(a, 'D3', 0);  
         writeDigitalPin(a, 'D7', 0);  
@@ -67,7 +73,7 @@ while toc <= 600
     end
     
     idx = idx + 1;
-    if idx > duration
+    if idx > 30
         idx = 1;
     end
     pause_time = toc - time;
