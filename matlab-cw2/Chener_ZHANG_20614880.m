@@ -6,12 +6,12 @@ clear all
 
 % Insert answers here
 clear
-a = arduino("/dev/cu.usbserial-10","Uno");
-for i = 1:10  
-    writeDigitalPin(a,'D7',1);  
-    pause(0.5);  
-    writeDigitalPin(a,'D7',0);  
-    pause(0.5);  
+a = arduino("/dev/cu.usbserial-10","Uno"); % connect the arduino to the workspace 
+for i = 1:10 % set 10 cycles
+    writeDigitalPin(a,'D7',1);  % connect the LED to the digital pin (e.g. D7) and make it light
+    pause(0.5);  % keep the LED light on for 0.5 seconds
+    writeDigitalPin(a,'D7',0);  % turn off the LED
+    pause(0.5); % keep the LED light off for 0.5 seconds
 end
 %% TASK 1 - READ TEMPERATURE DATA, PLOT, AND WRITE TO A LOG FILE [20 MARKS]
 
@@ -21,12 +21,13 @@ a = arduino("/dev/cu.usbserial-10","Uno");
 V_0c = 0.5;
 T_c = 0.01;
 duration = 600;
-sampling_interval = 1;
+interval = 1;
 time = 0:duration;
 temperature = zeros(1, length(time));
 for t = 1:length(time)
     A0_voltage(t) = readVoltage(a,'A0');
     temperature(t) = (A0_voltage(t)-V_0c)/T_c;
+    pause(0.95);
 end
 min_temp = min(temperature);
 max_temp = max(temperature);
@@ -80,7 +81,9 @@ f = temp_monitor(a);
 %% TASK 3 - ALGORITHMS – TEMPERATURE PREDICTION [25 MARKS]
 
 % Insert answers here
-
+clear all
+a = arduino("/dev/cu.usbserial-10","Uno");
+f = temp_prediction(a);
 
 %% TASK 4 - REFLECTIVE STATEMENT [5 MARKS]
 
