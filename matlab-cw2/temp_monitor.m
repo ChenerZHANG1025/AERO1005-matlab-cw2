@@ -11,8 +11,8 @@ function temp_monitor = temp_monitor(a)
 % draw the living figure for the temperature changing with the time and
 % the temperature by using LED to make the temperature representation more
 % direct. If the Green LED lights on, the cabin is in a comfortable
-% temperature (18-24 C), when the temperature is greater, the red LED turns
-% on, and the yellow one turn on when the temperature is lower than 18 C.
+% temperature (18-24 °C), when the temperature is greater, the red LED turns
+% on, and the yellow one turn on when the temperature is lower than 18 °C.
 
 % draw the living time-temperature figure 
 figure;
