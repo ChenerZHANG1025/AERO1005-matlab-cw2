@@ -1,5 +1,17 @@
-function temp_prediction = time_prediction(a)
-% TEMP_PREDICTION is a function of 
+function temp_prediction = temp_prediction(a)
+% TEMP_PREDICTION is a function based on the temperature collected by the
+% temperature sensor which is connected to arduino and pass the information
+% by using the arduino and is used to predict the future temperature.
+%
+% TEMP_PREDICTION = TEMP_PREDICTION(a) is worked with the variable a, which
+% represents the arduino connected to the computer. (e.g.a =
+% arduino("/dev/cu.usbserial-10","Uno")), the connected arduino should set
+% in the main running file and pass the arduino variable to the function
+% here. The function is to predict the temperature of the cabin five
+% minutes later. Meanwhile, the related temperature and rate are printed to
+% the screen. Also, the LEDs are used to alarm the temperature changing
+% rate. The system would produce a steady green light when the temperature stays within a comfortable range and the rate ranges from -4 to 4.  A steady red light would appear in its place if the temperature change rate is more than +4 °C/min.  A steady yellow light should appear if the temperature change rate is higher than -4°C/min.
+    
     collect_temp = [];  % set an empty array for the collect temperature data     
     tic; % start the timer
     while true % set the infinite time for the loop
