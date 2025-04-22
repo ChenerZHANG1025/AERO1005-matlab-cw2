@@ -21,7 +21,7 @@ h = plot(NaN,NaN); % set a variable represents an empty figure
 xlabel('Time (s)');
 ylabel('Temperature (Celsius)');
 grid on; % generate the grid lines
-xlim([0 30])
+xlim([0 30]) % limit the initial x axis from 0 to 30
 ylim([10 40]); % limit the y axis from 10 t0 40
 hold on; % keep the figure drawing
 
@@ -29,9 +29,7 @@ n = 30;  % set 30 data points for each group of data
 time_data = NaN(1, n); % set an empty array with the length of the whole duration for collecting time data
 temp_data = NaN(1, n); % set an empty array with the length of the whole duration for collecting temperature data
 idx = 1; % let the data collect from number 1, and make an index for the data collected from the arduino
- % set an empty array with the length of the whole duration for collecting time data
- % set an empty array with the length of the whole duration for collecting temperature data
- % let the data collect from number 1, and make an index for the data collected from the arduino
+
 
 % Make the LED  ccxdcxlight off at the beginning
 writeDigitalPin(a, 'D3', 0); % D3 connects with green LED
@@ -39,8 +37,8 @@ writeDigitalPin(a, 'D5', 0); % D5 connects with yellow LED
 writeDigitalPin(a, 'D7', 0); % D7 connects with red LED
 
 tic; % start the timer
-while true % determine whether the elapsed time is greater than 600 seconds
-    time = toc; % set the variable
+while true % set infinite time for the loop
+    time = toc; % set the variable 'time' as the time required to run the code
     A0_voltage = readVoltage(a, 'A0'); % record the voltage of the temperature sensor which is connect to the analogue pin (A0)
     temp = (A0_voltage - 0.5) / 0.01;  % calculate the temperature based on the voltage
     % set the limit of the x axis to adapt the change of the time
