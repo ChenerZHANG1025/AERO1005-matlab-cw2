@@ -1,7 +1,7 @@
 function temp_monitor = temp_monitor(a)
 % TEMP_MONITOR is a function based on the temperature collected by the
 % temperature sensor which is connected to arduino and pass the information
-% by using the arduino.
+% by using the arduino and is used to monitor the temperature of the cabin.
 %
 % TEMP_MONITOR = TEMP_MONITOR(a) is worked with the variable a, which
 % represents the arduino connected to the computer. (e.g.a =
