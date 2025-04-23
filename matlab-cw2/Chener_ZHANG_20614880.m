@@ -75,7 +75,7 @@ end
 % similar to the above process
 fprintf(fileID,'Max temp\t\t%.2f C\n',max_temp);
 fprintf(fileID,'Min temp\t\t%.2f C\n',min_temp);
-fprintf(fileID,'Average temp\t%.2f C\n\n',avg_temp);
+fprintf(fileID,'Average temp\t\t%.2f C\n\n',avg_temp);
 fprintf(fileID,'Data logging terminated');
 fclose(fileID); % close the file
 %% TASK 2 - LED TEMPERATURE MONITORING DEVICE IMPLEMENTATION [25 MARKS]
