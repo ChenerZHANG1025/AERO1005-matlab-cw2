@@ -17,6 +17,7 @@ end
 
 % Insert answers here
 clear all
+% question a b
 a = arduino("/dev/cu.usbserial-10","Uno"); % connect the arduino to the workspace 
 V_0c = 0.5; % the zero degree voltage of the temperature seneor is 0.5 V
 T_c = 0.01; % the temperature coefficient of the temperature sensor is 0.01
@@ -32,13 +33,14 @@ end
 min_temp = min(temperature); % record the minimum temperature
 max_temp = max(temperature); % record the maximum temperature
 avg_temp = mean(temperature); % record the average temperature
+% question c
 figure; % start drawing the figure
 plot(time,temperature); % plot the time and temperature figure
 xlabel('Time (s)'); % the label for x axis is Time unit is s
 xlim([0 600]); % the x axis is from 0 to 600
 ylabel('Temperature (Celsius)'); % the label for y axis is temperature the unit is celsius
 grid on; % generate grid lines
-
+% question d
 date = datetime('now'); % dectect and record the actual time
 a = datestr(date,'mm/dd/yyyy'); % set the date format as month/date/year (e.g.05/03/2025)
 Location = 'Ningbo'; 
@@ -60,6 +62,7 @@ disp(f);  % display the temperature in command window
 disp(g);  % display the temperature in command window
 h = sprintf('\nData logging terminated');
 disp(h);
+% question e
 fileID = fopen('cabin_temperature.txt','w'); % open the file called cabin_temperature.txt, set the file ID and let the computer write data to the file.
 %if there is already a file with this file ID, cover it
 fprintf(fileID,'Data logging initiated - %s\nLocation - %s\n\n', a, Location); % write the heading of the table into the file
